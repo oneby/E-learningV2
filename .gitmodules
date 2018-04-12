@@ -4,3 +4,6 @@
 [submodule "web-client"]
 	path = web-client
 	url = git://github.com/TOKdawn/Outsourcing-competition.git
+[submodule "media-server"]
+	path = media-server
+	url = git@github.com:sansroman/E-learning-media-server.git
