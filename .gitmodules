@@ -7,3 +7,6 @@
 [submodule "media-server"]
 	path = media-server
 	url = git@github.com:sansroman/E-learning-media-server.git
+[submodule "http-server"]
+	path = http-server
+	url = git@github.com:sansroman/E-learning-Http-server.git
