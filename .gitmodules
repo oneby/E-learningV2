@@ -1,0 +1,3 @@
+[submodule "E-learning-socket-server"]
+	path = E-learning-socket-server
+	url = git@github.com:sansroman/E-learning-socket-server.git
