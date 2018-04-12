@@ -1,3 +1,6 @@
-[submodule "Outsourcing-competition"]
-	path = Outsourcing-competition
+[submodule "socket-server"]
+	path = socket-server
+	url = git@github.com:sansroman/E-learning-socket-server.git
+[submodule "web-client"]
+	path = web-client
 	url = git://github.com/TOKdawn/Outsourcing-competition.git
