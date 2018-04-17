@@ -1,12 +1,48 @@
-1. HttpServer
-基于egg
-认证模块:
-passport
-oauth
+# 视频直播服务：
+由于nodejs的事件驱动，高并发，异步编程，专为网络设计的特性，所以服务器整体基于nodejs进行搭建。该系统提供了提供便捷接入、高清流畅、低延迟、高并发，多种交互的教学音视频直播服务。
 
-2. MediaServer
-基于node-media-server
-ffmpeg
+## 直播服务：
+1. 视频播放
+    支持web，android，ios视频，在线直播的全平台播放，同时优化了首屏体验，实现了首屏秒开
 
-3. SocketServer
-基于egg-socket.io
+2. 直播转码
+    实现了窄带宽高清转码，相同清晰度下为用户节省带宽，码率自适应的技术可以方便用户在不同网络状况下都获得良好的用户体验
+
+3. 安全防护
+    实现url加密鉴权，放盗链，https安全加速，防劫持防篡改
+
+4. 师生互动
+    通过websocket服务器实现了教师端向学生端发起测验，实时收集测验结果反馈给老师，学生可以在老师的控制下进行主题讨论，并把讨论结果反馈给老师，老师及时地查看学生讨论结果
+
+5. 录像播放
+    直播开启的同时可以录制视频，错过直播的用户可以方便的观看视频
+
+## 1. HttpServer
+我们基于egg开发该服务器，主要提供权限认证，RESTful接口等web服务;
+我们用passport去进行用户鉴权，基于OAuth协议，同时可以收到客户端发起的http请求并通过websocket服务器向相应房间进行广播
+
+
+
+
+
+## 2. MediaServer
+我们基于node-media-server开发此流媒体服务器，提供直播播放，录播回放等功能，具有以下特性：
+* 支持的音视频编码 H.264/H.265/AAC/SPEEX/NELLYMOSER
+* 支持缓存最近一个关键帧间隔数据，实现RTMP协议秒开
+* 支持RTMP直播流转LIVE-HTTP-FLV流,支持 flv.js 播放
+* 支持RTMP直播流转LIVE-WebSocket-FLV,支持 flv.js 播放
+* 支持星域CDN风格的鉴权
+* 支持事件回调
+* 支持https/wss加密传输
+* 支持服务器和流媒体信息统计
+* 支持RTMP直播流转HLS,DASH直播流
+* 支持RTMP直播流录制为MP4文件并开启faststart
+* 支持RTMP/RTSP中继
+
+
+## 3. SocketServer
+我们基于egg-socket.io开发websocket服务器，提供了房间管理，在线课题测验，在线课堂讨论等功能，具有以下特性：
+* 使用wss加密保证用户数据
+* 支持namespace和room双层空间，方便对直播进行房间管理，对用户进行分组管理
+* 与http服务器深度绑定，可以通特定api去进行关闭直播，发起事件等功能
+
